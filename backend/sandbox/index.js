@@ -16,6 +16,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+app.set("trust proxy", 1);
 app.use(session({
   secret: 'chuoimahoa',
   resave: false,
@@ -159,6 +160,6 @@ app.post('/admin/logout', function (req, res) {
   })
 })
 
-app.listen(8081, () => {
-  console.log("server listening on port 8081");
+app.listen(8080, () => {
+  console.log("server listening on port 8080");
 });

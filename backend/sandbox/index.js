@@ -12,7 +12,7 @@ const CommentRouter = require("./routes/CommentRouter");
 dbConnect();
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://s772y4.csb.app"],
   credentials: true
 }));
 app.use(express.json());
@@ -20,7 +20,11 @@ app.use(session({
   secret: 'chuoimahoa',
   resave: false,
   saveUninitialized: false,
-  cookie: {httpOnly: true}
+  cookie: {
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true
+  }
 }
 ))
 app.use("/api/user", UserRouter);

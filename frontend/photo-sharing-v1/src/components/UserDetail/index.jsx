@@ -15,7 +15,7 @@ function UserDetail() {
     const { userId } = useParams();
     const [user, setUser] = useState(null);
     useEffect(() => {
-      fetchModel(`http://localhost:8081/user/${userId}`)
+      fetchModel(`https://w98c3h-8080.csb.app/user/${userId}`)
       .then((data) => {
         setUser(data)
       })

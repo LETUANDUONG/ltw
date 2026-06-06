@@ -17,7 +17,7 @@ function LoginRegister(props) {
     const handleLogin = async (e) => {
         e.preventDefault()
         try{
-            const response = await fetch("http://localhost:8081/admin/login", {
+            const response = await fetch("https://w98c3h-8080.csb.app/admin/login", {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify({login_name: loginName, password: password}),
@@ -42,7 +42,7 @@ function LoginRegister(props) {
             return;
         }
         try{
-            const response = await fetch('http://localhost:8081/user', {
+            const response = await fetch('https://w98c3h-8080.csb.app/user', {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},  
                 body: JSON.stringify({

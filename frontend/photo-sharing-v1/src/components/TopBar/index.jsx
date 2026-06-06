@@ -16,7 +16,7 @@ function TopBar ({ loggedInUser, setLoggedInUser }) {
   const userId = pathArray[2];
   let rightContent = '';
   useEffect(() => {
-    fetchModel(`http://localhost:8081/user/${userId}`)
+    fetchModel(`https://w98c3h-8080.csb.app/user/${userId}`)
     .then((data) => {
       setUser(data)
     })
@@ -32,7 +32,7 @@ function TopBar ({ loggedInUser, setLoggedInUser }) {
     }
     const handleLogout = async() =>{
       try{
-        const response = await fetch('http://localhost:8081/admin/logout', {
+        const response = await fetch('https://w98c3h-8080.csb.app/admin/logout', {
           method: 'POST',
           credentials: 'include'
         })
@@ -51,7 +51,7 @@ function TopBar ({ loggedInUser, setLoggedInUser }) {
       const formData = new FormData();
       formData.append('photo', file);
       try{
-        await axios.post('http://localhost:8081/api/photo/new', formData, {
+        await axios.post('https://w98c3h-8080.csb.app/api/photo/new', formData, {
           headers: {'Content-Type': 'multipart/form-data'}, 
           withCredentials: true
         });

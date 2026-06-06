@@ -19,7 +19,7 @@ function UserPhotos() {
   const [newComment, setNewComment] = useState("");
   useEffect(() => {
     setIsLoading(true);
-    fetchModel(`http://localhost:8081/photosOfUser/${userId}`)
+    fetchModel(`https://w98c3h-8080.csb.app/photosOfUser/${userId}`)
       .then((data) => {
         setPhotos(data);
         setIsLoading(false);
@@ -42,7 +42,7 @@ function UserPhotos() {
   const handleAddComment = async (photoId) => {
     if (!newComment.trim()) return;
     try {
-      await axios.post(`http://localhost:8081/api/comment/CommentOfPhotos/${photoId}`,
+      await axios.post(`https://w98c3h-8080.csb.app/api/comment/CommentOfPhotos/${photoId}`,
         {
           comment: newComment
         },
@@ -51,7 +51,7 @@ function UserPhotos() {
         });
       setNewComment("")
 
-      fetchModel(`http://localhost:8081/photosOfUser/${userId}`)
+      fetchModel(`https://w98c3h-8080.csb.app/photosOfUser/${userId}`)
         .then((data) => setPhotos(data));
     }
     catch (error) {
@@ -65,7 +65,7 @@ function UserPhotos() {
         <Card key={photo._id} style={{ marginBottom: '30px' }}>
           <CardMedia
             component='img'
-            image={`http://localhost:8081/images/${photo.file_name}`}
+            image={`https://w98c3h-8080.csb.app/images/${photo.file_name}`}
             alt="User Photo"
           />
           <CardContent>

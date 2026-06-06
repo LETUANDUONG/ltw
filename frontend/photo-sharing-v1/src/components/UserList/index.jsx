@@ -17,7 +17,7 @@ import fetchModel from "../../lib/fetchModelData";
 function UserList () {
     const [users, setUsers] = useState([])
     useEffect(() => {
-      fetchModel('http://localhost:8081/user/list')
+      fetchModel('https://w98c3h-8080.csb.app/user/list')
       .then((data) => {
         setUsers(data)
       })

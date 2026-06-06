@@ -13,6 +13,9 @@ function LoginRegister(props) {
     const [regPasswordConfirm, setRegPasswordConfirm] = useState('')
     const [regLastName, setRegLastName] = useState('')
     const [regMessage, setRegMessage] = useState('')
+    const [regLocation, setRegLocation] = useState('')
+    const [regDescription, setRegDescription] = useState('')
+    const [regOccupation, setRegOccupation] = useState('')
     //Xử lý đăng nhập
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -48,7 +51,7 @@ function LoginRegister(props) {
                 body: JSON.stringify({
                     login_name: regLoginName, password: regPassword,
                     first_name: regFirstName, last_name: regLastName,
-                    
+                    location: regLocation, description: regDescription, occupation: regOccupation
                 })
             })
             const data = await response.json()
@@ -59,6 +62,7 @@ function LoginRegister(props) {
                 setRegMessage("Đăng ký thành công, Bạn có thể đăng nhập")
                 setRegLoginName(''); setRegPassword(''); setRegPasswordConfirm('');
                 setRegFirstName(''); setRegLastName('');
+                setRegLocation(''); setRegDescription(''); setRegOccupation('');
             }
         }catch(err){
             setRegMessage('Lỗi kết nối server')
@@ -89,6 +93,9 @@ function LoginRegister(props) {
                         <TextField fullWidth label="tên đăng nhập" margin="normal" required value={regLoginName} onChange={(e) => setRegLoginName(e.target.value)}/>
                         <TextField fullWidth label="họ" margin="normal" required value={regFirstName} onChange={(e) => setRegFirstName(e.target.value)}/>
                         <TextField fullWidth label="tên" margin="normal" required value={regLastName} onChange={(e) => setRegLastName(e.target.value)}/>
+                        <TextField fullWidth label="địa điểm (location)" margin="normal" value={regLocation} onChange={(e) => setRegLocation(e.target.value)}/>
+                        <TextField fullWidth label="mô tả (description)" margin="normal" value={regDescription} onChange={(e) => setRegDescription(e.target.value)}/>
+                        <TextField fullWidth label="nghề nghiệp (occupation)" margin="normal" value={regOccupation} onChange={(e) => setRegOccupation(e.target.value)}/>
                         <TextField fullWidth label="mật khẩu" margin="normal" required value={regPassword} onChange={(e) => setRegPassword(e.target.value)}/>
                         <TextField fullWidth label="xác nhận mật khẩu" margin="normal" required value={regPasswordConfirm} onChange={(e) => setRegPasswordConfirm(e.target.value)}/>
                         {regMessage && <Typography color={regMessage.includes('thành công') ? 'primary' : 'error'}>{regMessage}</Typography>}

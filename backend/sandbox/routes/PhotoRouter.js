@@ -2,8 +2,13 @@ const express = require("express");
 const Photo = require("../db/photoModel");
 const router = express.Router();
 const multer = require("multer");
-
 const path = require("path");
+const fs = require("fs");
+
+// Đảm bảo thư mục images tồn tại trước khi upload
+if (!fs.existsSync('images/')) {
+    fs.mkdirSync('images/', { recursive: true });
+}
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
